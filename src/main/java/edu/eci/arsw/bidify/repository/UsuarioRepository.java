@@ -9,7 +9,7 @@ import edu.eci.arsw.bidify.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-    Usuario findByUserNameAndPassword(String userName, String password);
+    
     boolean existsByUserName(String nombre);
     boolean existsById(Long id);
     void deleteByUserName(String userName);

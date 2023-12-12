@@ -45,9 +45,9 @@ public class SubastaControllerTest {
         // Arrange
         Producto producto5 = new Producto("Funko pop Michael Jackson", (float) 600000, "https://http2.mlstatic.com/D_NQ_NP_631613-MCO71749069309_092023-O.webp");
         productoService.save(producto5);
-        Usuario usuario1 = new Usuario("migue", "Miguel Angel", "miguel@gmail.com", "123");
-        Usuario usuario2 = new Usuario("jaider", "Jaider Gonzalez", "jaider@gmail.com", "123");
-        Usuario usuario3 = new Usuario("santi", "Santiago Gonzalez", "santiago@gmail.com", "123");
+        Usuario usuario1 = new Usuario("migue");
+        Usuario usuario2 = new Usuario("jaider");
+        Usuario usuario3 = new Usuario("santi");
         usuarioService.registrarUsuario(usuario1);
         usuarioService.registrarUsuario(usuario2);
         usuarioService.registrarUsuario(usuario3);

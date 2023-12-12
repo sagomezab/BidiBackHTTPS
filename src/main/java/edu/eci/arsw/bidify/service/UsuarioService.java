@@ -28,8 +28,8 @@ public class UsuarioService {
         }
     }
 
-    public boolean login(String userName, String password) {
-        Usuario user = usuarioRepository.findByUserNameAndPassword(userName, password);
+    public boolean login(String userName) {
+        Usuario user = usuarioRepository.findByUserName(userName).get();
         return user != null;
     }
     

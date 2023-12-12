@@ -33,12 +33,12 @@ public class UsuarioControllerTest {
     @Test
     public void testList() {
         // Arrange
-        Usuario usuario1 = new Usuario("migue", "Miguel Angel", "miguel@gmail.com", "123");
-        Usuario usuario2 = new Usuario("jaider", "Jaider Gonzalez", "jaider@gmail.com", "123");
-        Usuario usuario3 = new Usuario("santi", "Santiago Gonzalez", "santiago@gmail.com", "123");
-        Usuario usuario4 = new Usuario("camilo", "camilo Angel", "camilo@gmail.com", "123");
-        Usuario usuario5 = new Usuario("sebastian", "sebastian Gonzalez", "sebastian@gmail.com", "123");
-        Usuario usuario6 = new Usuario("andrea", "andrea Gonzalez", "andrea@gmail.com", "123");
+        Usuario usuario1 = new Usuario("migue");
+        Usuario usuario2 = new Usuario("jaider");
+        Usuario usuario3 = new Usuario("santi");
+        Usuario usuario4 = new Usuario("camilo");
+        Usuario usuario5 = new Usuario("sebastian");
+        Usuario usuario6 = new Usuario("andrea");
         usuarioService.registrarUsuario(usuario1);
         usuarioService.registrarUsuario(usuario2);
         usuarioService.registrarUsuario(usuario3);
@@ -55,7 +55,7 @@ public class UsuarioControllerTest {
     @Test
     public void testRegistrar() {
         // Arrange
-        Usuario usuario = new Usuario("migue", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("migue");
         // Act
         ResponseEntity<?> response = usuarioController.registrar(usuario);
         // Assert
@@ -63,22 +63,13 @@ public class UsuarioControllerTest {
         assertEquals("Usuario registrado", ((Mensaje) response.getBody()).getMensaje());
     }
 
-    @Test
-    public void testRegistrarBlankUsernameAndPassword() {
-        // Arrange
-        Usuario usuario = new Usuario("migue", null, "miguel@gmail.com", null);
-        // Act
-        ResponseEntity<?> response = usuarioController.registrar(usuario);
-        // Assert
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("El nombre de usuario y la contraseña son obligatorios", ((Mensaje) response.getBody()).getMensaje());
-    }
+    
 
     @Test
     public void testDelete() {
         // Arrange
         String userName = "angelito";
-        Usuario usuario = new Usuario("angelito", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("angelito");
         usuarioService.registrarUsuario(usuario);
         // Act
         ResponseEntity<?> response = usuarioController.delete(userName);
@@ -101,7 +92,7 @@ public class UsuarioControllerTest {
     @Test
     public void testUpdate() {
         // Arrange
-        Usuario usuario = new Usuario("angelito", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("angelito");
         usuarioService.registrarUsuario(usuario);
         // Act
         ResponseEntity<?> response = usuarioController.update(usuario);
@@ -113,7 +104,7 @@ public class UsuarioControllerTest {
     @Test
     public void testUpdateNotFound() {
         // Arrange
-        Usuario usuario = new Usuario("angelito", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("angelito");
         // Act
         ResponseEntity<?> response = usuarioController.update(usuario);
         // Assert
@@ -124,7 +115,7 @@ public class UsuarioControllerTest {
     @Test
     public void testLoginSuccessful() {
         // Arrange
-        Usuario usuario = new Usuario("angelito", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("angelito");
         usuarioService.registrarUsuario(usuario);
         // Act
         ResponseEntity<?> response = usuarioController.login(usuario);
@@ -136,7 +127,7 @@ public class UsuarioControllerTest {
     @Test
     public void testLoginInvalidCredentials() {
         // Arrange
-        Usuario usuario = new Usuario("angelito", "Miguel Angel", "miguel@gmail.com", "123");
+        Usuario usuario = new Usuario("angelito");
         // No registres el usuario en usuarioService
         // Act
         ResponseEntity<?> response = usuarioController.login(usuario);
@@ -149,7 +140,7 @@ public class UsuarioControllerTest {
     public void testGetProductos() {
         // Arrange
         String userName = "Liceth";
-        Usuario usuario0 = new Usuario("Liceth", "KarenLi", "karen@gmail.com", "123");
+        Usuario usuario0 = new Usuario("Liceth");
         usuarioService.registrarUsuario(usuario0);
         Producto productoprueba1 = new Producto("Jordan One", (float) 600000, "https://phantom-expansion.unidadeditorial.es/6239da431613d30a7ade440a4719e3db/crop/0x378/1074x982/resize/828/f/jpg/assets/multimedia/imagenes/2022/03/21/16478732471407.jpg");
         productoprueba1.setUsuario(usuario0);
@@ -181,7 +172,7 @@ public class UsuarioControllerTest {
     public void testGetProductosNoProductos() {
         // Arrange
         String userName = "Amor";
-        Usuario usuario = new Usuario("Amor", "KarenLi", "karen@gmail.com", "123");
+        Usuario usuario = new Usuario("Amor");
         usuarioService.registrarUsuario(usuario);
         // Act
         ResponseEntity<?> response = usuarioController.getProductos(userName);

@@ -47,7 +47,7 @@ public class createSubastas implements CommandLineRunner{
         productos.add(producto3);
 
         
-        Usuario usuario0 = new Usuario("Karen", "KarenLi", "karen@gmail.com", "123");
+        Usuario usuario0 = new Usuario("Karen");
         usuarioService.registrarUsuario(usuario0);
         Producto productoprueba1 = new Producto("Plancha", (float) 600000, "https://www.hola.com/imagenes/seleccion/20201210180792/mejor-plancha-de-pelo/0-898-977/ghd-gold-planchas-a.jpg");
         productoprueba1.setUsuario(usuario0);
@@ -58,12 +58,12 @@ public class createSubastas implements CommandLineRunner{
         usuario0.addProducto(productoprueba2);
         usuario0.addProducto(productoprueba1);
         
-        Usuario usuario1 = new Usuario("migue", "Miguel Angel", "miguel@gmail.com", "123");
-        Usuario usuario2 = new Usuario("jaider", "Jaider Gonzalez", "jaider@gmail.com", "123");
-        Usuario usuario3 = new Usuario("santi", "Santiago Gonzalez", "santiago@gmail.com", "123");
-        Usuario usuario4 = new Usuario("camilo", "camilo Angel", "camilo@gmail.com", "123");
-        Usuario usuario5 = new Usuario("sebastian", "sebastian Gonzalez", "sebastian@gmail.com", "123");
-        Usuario usuario6 = new Usuario("andrea", "andrea Gonzalez", "andrea@gmail.com", "123");
+        Usuario usuario1 = new Usuario("migue");
+        Usuario usuario2 = new Usuario("jaider");
+        Usuario usuario3 = new Usuario("santi");
+        Usuario usuario4 = new Usuario("camilo");
+        Usuario usuario5 = new Usuario("sebastian");
+        Usuario usuario6 = new Usuario("andrea");
         
         usuarioService.registrarUsuario(usuario1);
         usuarioService.registrarUsuario(usuario2);

@@ -48,18 +48,7 @@ public class UsuarioServiceTest {
         verify(usuarioRepository, times(1)).save(user);
     }
 
-    @Test
-    public void testLogin() {
-        // Arrange
-        String userName = "testUser";
-        String password = "testPassword";
-        Usuario user = new Usuario();
-        when(usuarioRepository.findByUserNameAndPassword(userName, password)).thenReturn(user);
-        // Act
-        boolean result = usuarioService.login(userName, password);
-        // Assert
-        assertTrue(result);
-    }
+    
 
     @Test
     public void testFindAll() {

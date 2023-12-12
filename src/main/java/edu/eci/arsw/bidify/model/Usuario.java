@@ -24,20 +24,13 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String userName;
-    @NotNull
-    private String nombre;
-    @NotNull
-    private String email;
-    private String password;
+    
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Producto> productos;
 
 
-    public Usuario(String userName, String nombre, String email, String password){
-        this.userName=userName;
-        this.nombre=nombre;
-        this.email=email;
-        this.password=password;
+    public Usuario(String userName){
+        this.userName = userName;
         productos = new ArrayList<>();
     }
     

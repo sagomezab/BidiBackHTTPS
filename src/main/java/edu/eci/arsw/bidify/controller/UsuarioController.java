@@ -32,8 +32,8 @@ public class UsuarioController {
 
     @PostMapping("/registrar")
     public ResponseEntity<?> registrar(@RequestBody Usuario usuario){
-        if(StringUtils.isBlank(usuario.getUserName()) || StringUtils.isBlank(usuario.getPassword()))
-            return new ResponseEntity<>(new Mensaje("El nombre de usuario y la contraseña son obligatorios"), HttpStatus.BAD_REQUEST);
+        if(StringUtils.isBlank(usuario.getUserName()))
+            return new ResponseEntity<>(new Mensaje("El nombre de usuario es obligatorio"), HttpStatus.BAD_REQUEST);
 
         usuarioService.registrarUsuario(usuario);
         return new ResponseEntity<>(new Mensaje("Usuario registrado"), HttpStatus.OK);
@@ -59,7 +59,7 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario usuario) {
-        boolean isAuthenticated = usuarioService.login(usuario.getUserName(), usuario.getPassword());
+        boolean isAuthenticated = usuarioService.login(usuario.getUserName());
         if(isAuthenticated){
             return new ResponseEntity<>(new Mensaje("Login exitoso"), HttpStatus.OK);
         } else {
@@ -93,7 +93,7 @@ public class UsuarioController {
 
             for (Usuario usuario : usuarios) {
                 List<Producto> productosUsuario = usuario.getProductos();
-                productosPorUsuario.put(usuario.getNombre(), productosUsuario);
+                productosPorUsuario.put(usuario.getUserName(), productosUsuario);
             }
 
             if (productosPorUsuario.isEmpty()) {
